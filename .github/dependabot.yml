@@ -26,3 +26,13 @@ updates:
       npm-deps:
         patterns:
           - '*'
+    ignore:
+      # typescript-eslint does not support TypeScript 7 yet; lint fails in CI.
+      - dependency-name: typescript
+        versions: ['>=7']
+      # Must stay in step with engines.vscode (^1.85.0); a newer one makes vsce refuse to package.
+      - dependency-name: '@types/vscode'
+        update-types: ['version-update:semver-minor', 'version-update:semver-major']
+      # Typings follow the Node runtime used in CI and by VS Code (22).
+      - dependency-name: '@types/node'
+        update-types: ['version-update:semver-major']
