@@ -1,0 +1,16 @@
+.vscode/**
+.claude/**
+.github/**
+banners/**
+src/**
+test/**
+out/**
+node_modules/**
+.gitignore
+esbuild.js
+eslint.config.mjs
+tsconfig.json
+pnpm-lock.yaml
+pnpm-workspace.yaml
+CLAUDE.md
+**/*.map

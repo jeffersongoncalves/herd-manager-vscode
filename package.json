@@ -1,0 +1,90 @@
+{
+  "name": "jsg-herd-manager",
+  "displayName": "JSG Herd Manager",
+  "description": "Manage Laravel Herd sites from VS Code: herd.yml configuration, link/unlink, HTTPS and open in browser",
+  "version": "1.0.0",
+  "publisher": "JeffersonGoncalves",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jeffersongoncalves/herd-manager-vscode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jeffersongoncalves/herd-manager-vscode/issues"
+  },
+  "homepage": "https://github.com/jeffersongoncalves/herd-manager-vscode#readme",
+  "icon": "resources/icon.png",
+  "keywords": [
+    "laravel",
+    "herd",
+    "php",
+    "valet",
+    "local development"
+  ],
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "workspaceContains:herd.yml",
+    "workspaceContains:artisan",
+    "workspaceContains:composer.json"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      { "command": "herd.configure", "title": "Configure Site", "category": "Herd", "icon": "$(gear)" },
+      { "command": "herd.link", "title": "Link Site", "category": "Herd", "icon": "$(link)" },
+      { "command": "herd.unlink", "title": "Unlink Site", "category": "Herd", "icon": "$(debug-disconnect)" },
+      { "command": "herd.openInBrowser", "title": "Open in Browser", "category": "Herd", "icon": "$(globe)" },
+      { "command": "herd.refresh", "title": "Refresh", "category": "Herd", "icon": "$(refresh)" },
+      { "command": "herd.editName", "title": "Change Site Name", "category": "Herd" },
+      { "command": "herd.editPhp", "title": "Change PHP Version", "category": "Herd" },
+      { "command": "herd.toggleHttps", "title": "Toggle HTTPS", "category": "Herd" },
+      { "command": "herd.focus", "title": "Show Herd Manager", "category": "Herd" }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        { "id": "herdManager", "title": "Herd", "icon": "resources/herd.svg" }
+      ]
+    },
+    "views": {
+      "herdManager": [
+        { "id": "herd.view", "name": "Site" }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        { "command": "herd.link", "when": "view == herd.view && herd.installed && !herd.linked", "group": "navigation@1" },
+        { "command": "herd.unlink", "when": "view == herd.view && herd.linked", "group": "navigation@1" },
+        { "command": "herd.openInBrowser", "when": "view == herd.view && herd.linked", "group": "navigation@2" },
+        { "command": "herd.configure", "when": "view == herd.view && herd.installed", "group": "navigation@3" },
+        { "command": "herd.refresh", "when": "view == herd.view", "group": "navigation@4" }
+      ],
+      "commandPalette": [
+        { "command": "herd.focus", "when": "false" }
+      ]
+    }
+  },
+  "scripts": {
+    "compile": "node esbuild.js",
+    "watch": "node esbuild.js --watch",
+    "package": "node esbuild.js --production",
+    "typecheck": "tsc -p . --noEmit",
+    "test": "tsc -p . && node --test \"out/test/**/*.test.js\"",
+    "lint": "eslint src test",
+    "vscode:prepublish": "pnpm run package"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^22.0.0",
+    "@types/vscode": "~1.85.0",
+    "@typescript-eslint/eslint-plugin": "^8.70.0",
+    "@typescript-eslint/parser": "^8.70.0",
+    "esbuild": "^0.28.2",
+    "eslint": "^10.10.0",
+    "typescript": "~6.0.3"
+  }
+}
