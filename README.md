@@ -4,6 +4,9 @@
 
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-support-FFDD00?style=flat-square&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/jeffersongoncalves)
 
+[![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/v/JeffersonGoncalves.jsg-herd-manager.svg)](https://marketplace.visualstudio.com/items?itemName=JeffersonGoncalves.jsg-herd-manager)
+[![Installs](https://img.shields.io/visual-studio-marketplace/i/JeffersonGoncalves.jsg-herd-manager.svg)](https://marketplace.visualstudio.com/items?itemName=JeffersonGoncalves.jsg-herd-manager)
+
 > Manage Laravel Herd site configuration directly from VS Code.
 
 **JSG Herd Manager** integrates [Laravel Herd](https://herd.laravel.com) into VS Code: configure the project's `herd.yml`, link/unlink the site, enable HTTPS and open it in the browser without leaving the editor. It is the VS Code port of the [Herd Manager](https://github.com/jeffersongoncalves/herd-manager-plugin) JetBrains plugin.
